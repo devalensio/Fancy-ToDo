@@ -23,7 +23,7 @@
               <a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter" >Add Todo<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">logout</a>
+              <a class="nav-link" onclick="logout()">logout</a>
             </li>
           </ul>
         </div>
@@ -93,36 +93,23 @@
 
       <!-- todo part -->
       <div class="container" style="padding-top: 28px; padding-bottom: 28px;">
-        <div class="row">
-          <div class="col-md-3" v-for="data in data_todo">
-            <div class="card" style="width: 18rem">
-              <div class="card-body">
-                <h5 class="card-title">{{data.title}}</h5>
-                <p class="card-text">{{data.description}}</p>
-                <a v-if="!data.done" href="javascript:void(null);"class="btn btn-success" v-on:click="toogleTodo(data)">Done ?</a>
-                <a v-else href="javascript:void(null);"class="btn btn-warning" v-on:click="toogleTodo(data)">Undone ?</a>
-                <a href="javascript:void(null)" class="btn btn-danger" v-on:click="deleteTodo(data)">Delete</a>
-              </div>
-            </div>
-
-          </div>
-        </div>
+        <component-todo
+          :data_todo="data_todo"
+          v-on:toggle="toggleTodo"
+          v-on:delete="deleteTodo">
+        </component-todo>
       </div>
 
     </div>
-
-
-
-
-
-
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@2.5.15/dist/vue.js"></script>
+    <script src="lib/component1.js" charset="utf-8"></script>
     <script src="lib/script.js" charset="utf-8"></script>
+    <script src="./lib/fbsdk.js"></script>
 
   </body>
 </html>

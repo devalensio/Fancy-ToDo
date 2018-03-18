@@ -54,3 +54,11 @@ function checkLoginState() {
       statusChangeCallback(response);
     });
 }
+
+function logout() {
+  window.FB.logout(function (response) {
+    localStorage.clear()
+    // statusChangeCallback(response)
+    window.location = 'login.html'
+  })
+}

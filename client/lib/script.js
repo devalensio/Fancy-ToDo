@@ -35,7 +35,6 @@ new Vue({
       })
     },
     deleteTodo:function (obj) {
-      console.log(obj);
       axios({
         method: 'get',
         url: 'http://localhost:3000/todos/delete',
@@ -46,8 +45,7 @@ new Vue({
         this.showTodo()
       })
     },
-    toogleTodo: function (obj) {
-      console.log(obj);
+    toggleTodo: function (obj) {
       axios({
         method: 'get',
         url: 'http://localhost:3000/todos/toggle',
