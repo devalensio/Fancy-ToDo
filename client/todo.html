@@ -63,19 +63,7 @@
 
       <!-- quotes-todo -->
       <div class="container" style="padding-top:28px">
-        <div class="row">
-          <div class="col-md-6 offset-md-3">
-            <div class="jumbotron">
-              <div class="container">
-                <p>Quotes Of the Day :</p>
-                <p style="font-weight: bold">"{{show_quotes.quote}}"</p>
-                <p class="lead">-{{show_quotes.author}}</p>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
+        <component-quotes :show_quotes="show_quotes"></component-quotes>
       </div>
 
       <!-- modal todo -->
@@ -102,7 +90,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" @click="addTodo">Submit</button>
+              <button type="button" class="btn btn-primary" @click="addTodo" data-dismiss="modal">Submit</button>
             </div>
           </div>
         </div>
@@ -125,8 +113,10 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@2.5.15/dist/vue.js"></script>
     <script src="lib/component1.js" charset="utf-8"></script>
+    <script src="lib/component2.js" charset="utf-8"></script>
     <script src="lib/script.js" charset="utf-8"></script>
     <script src="./lib/fbsdk.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   </body>
   <footer class="mainfooter" role="contentinfo" style="background-color: #000000; padding-top:28px">

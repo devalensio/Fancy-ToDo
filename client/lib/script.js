@@ -16,7 +16,7 @@ new Vue({
   },
   methods: {
     addTodo: function () {
-      alert('todo created')
+      swal("Todo has been created!");
       axios({
         method: 'post',
         url: 'http://localhost:3000/todos',
@@ -41,15 +41,32 @@ new Vue({
       })
     },
     deleteTodo:function (obj) {
-      axios({
-        method: 'get',
-        url: 'http://localhost:3000/todos/delete',
-        headers: {
-          id: obj._id
-        }
-      }).then(() => {
-        this.showTodo()
+      swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this todo anymore!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
       })
+      .then((willDelete) => {
+        if (willDelete) {
+          axios({
+            method: 'get',
+            url: 'http://localhost:3000/todos/delete',
+            headers: {
+              id: obj._id
+            }
+          }).then(() => {
+            this.showTodo()
+          })
+          swal("Poof! Your todo has been deleted!", {
+            icon: "success",
+          });
+        } else {
+          swal("Your Todo is safe!");
+        }
+      });
+
     },
     toggleTodo: function (obj) {
       axios({

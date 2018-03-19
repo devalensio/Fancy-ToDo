@@ -1,9 +1,9 @@
 let componentBody = {
   template: `
     <div class="row">
-      <div class="col-md-4" v-for="data in data_todo">
+      <div class="col-md-4" v-for="data in data_todo" style="padding-bottom: 28px">
         <div class="card">
-          <div class="card-body">
+          <div class="card-body" >
             <h5 v-if="!data.done" class="card-title">{{data.title}}</h5>
             <h5 v-else class="card-title" style="text-decoration: line-through">{{data.title}}</h5>
             <p class="card-text">{{data.description}}</p>
