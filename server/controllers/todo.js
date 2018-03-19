@@ -1,5 +1,7 @@
 const todo = require('../models/todo')
 const jwt = require('jsonwebtoken');
+const axios = require('axios');
+
 
 
 module.exports = {
@@ -67,6 +69,19 @@ module.exports = {
           })
         })
       }
+    })
+  },
+  quotesTodo : function (req, res) {
+    axios({
+      url: `https://talaikis.com/api/quotes/random/`,
+      method: 'get',
+      dataType: 'json'
+    }).then(data_todo => {
+      // console.log(data_todo.data);
+      res.status(200).json({
+        message: 'quotes of the day',
+        data: data_todo.data
+      })
     })
   }
 };

@@ -1,12 +1,18 @@
+if (!localStorage.token) {
+  window.location = 'login.html';
+}
+
 new Vue({
   el: '#vue-app',
   data: {
     title: '',
     message: '',
-    data_todo: []
+    data_todo: [],
+    show_quotes: []
   },
   created: function (){
-    this.showTodo()
+    this.showTodo(),
+    this.quotesTodo()
   },
   methods: {
     addTodo: function () {
@@ -56,7 +62,15 @@ new Vue({
       }).then(data => {
         this.showTodo()
       })
+    },
+    quotesTodo: function () {
+      axios({
+        method: 'get',
+        url: 'http://localhost:3000/todos/quotes'
+      }).then(({data}) => {
+        console.log(data.data);
+        this.show_quotes = data.data
+      })
     }
-
   }
 })

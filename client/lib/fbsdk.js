@@ -30,7 +30,6 @@ function statusChangeCallback(response) {
           access_token: response.authResponse.accessToken,
         }
       }).then(function(response) {
-        console.log(response);
         if (response.status === 200 && window.location.pathname === '/login.html') {
         localStorage.token = response.data.token;
         window.location = 'todo.html';
