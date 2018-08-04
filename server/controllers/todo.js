@@ -6,10 +6,13 @@ const axios = require('axios');
 
 module.exports = {
   addTodo: function (req, res) {
+    console.log(req.body,'ini nih');
+    console.log('here');
     let token = req.body.token
     let decoded = jwt.verify(token, process.env.SECRET)
+    console.log(decoded._id,'decoded');
     const todos = new todo()
-      todos.owner = decoded._id
+      todos.owner = decoded.id
       todos.title = req.body.title
       todos.description = req.body.message
       todos.save().then(data_todo => {
@@ -25,9 +28,10 @@ module.exports = {
       })
   },
   showTodo: function (req, res) {
+    console.log(req.headers.token);
     let token = req.headers.token
     let decoded = jwt.verify(token, process.env.SECRET)
-    todo.find({owner : decoded._id}).then(data_todo => {
+    todo.find({owner : decoded.id}).then(data_todo => {
       console.log(data_todo);
       res.status(201).json({
         message: 'Your todo',
